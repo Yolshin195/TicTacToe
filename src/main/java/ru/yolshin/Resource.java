@@ -1,3 +1,5 @@
+package ru.yolshin;
+
 public class Resource {
   public static String[] X = {
     "\\ /",

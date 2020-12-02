@@ -1,3 +1,5 @@
+package ru.yolshin;
+
 class Client {
   int[][] map = {
     {1, 0, 2},
@@ -5,10 +7,10 @@ class Client {
     {2, 0, 1},
   };
 
-  public static void main(String args[]) {
+/*  public static void main(String args[]) {
     Client c = new Client();
     c.window();
-  }
+  }*/
 
   public String getContent(int k, int i) {
     switch (k) {
