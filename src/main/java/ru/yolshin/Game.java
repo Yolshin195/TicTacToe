@@ -5,20 +5,27 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game implements Runnable {
+    private int currentStep = 1;
+    private final int maxStep;
     private final Map map;
     private final List<User> users;
     private User currentUser;
     private boolean isGaming;
-    private int currentStep;
-    private final int maxStep;
+
 
     Game() {
-        this.currentStep = 1;
         this.maxStep = 9;
         this.map = new Map(maxStep);
         this.users = new ArrayList<>();
         this.users.add(new User("Alex", Label.X));
         this.users.add(new User("Anna", Label.O));
+        this.currentUser = users.get(0);
+    }
+
+    public Game(Map map, List<User> users) {
+        this.maxStep = map.getSize();
+        this.map = map;
+        this.users = users;
         this.currentUser = users.get(0);
     }
 
@@ -42,10 +49,6 @@ public class Game implements Runnable {
         return new int[]{x, y};
     }
 
-    private void step(int x, int y) {
-        map.setLabel(x, y, currentUser.getLabel());
-    }
-
     private String show() {
         return "Текущий ход: " + currentStep + "\n" +
                 map +
@@ -63,7 +66,7 @@ public class Game implements Runnable {
                 System.out.println("Эта ячейка занята, выбери другую");
                 continue;
             }
-            step(input[0], input[1]);
+            map.setLabel(input[0], input[1], currentUser.getLabel());
 
             if (map.isIntersection(currentUser.getLabel())) {
                 System.out.println("--------------Победа!!!---------------");

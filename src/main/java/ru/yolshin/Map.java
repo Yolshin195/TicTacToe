@@ -16,6 +16,10 @@ public class Map {
         }
     }
 
+    public int getSize() {
+        return gameField.size();
+    }
+
     public boolean isIntersection(Label label) {
 
         for (int i = 0; i < rowSize; i += 3) {
