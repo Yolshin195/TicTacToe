@@ -13,11 +13,11 @@ class Client {
   }*/
 
   public String getContent(int k, int i) {
-    switch (k) {
-      case 1: return Resource.O[i];
-      case 2: return Resource.X[i];
-      default: return "   ";
-    }
+    return switch (k) {
+      case 1 -> Resource.O[i];
+      case 2 -> Resource.X[i];
+      default -> "   ";
+    };
   }
 
   public void window() {
@@ -49,7 +49,7 @@ class Client {
     }
 
     System.out.println("Ход игрока: 1");
-    System.out.println("");
+    System.out.println();
     System.out.println("> ");
   }
 }
